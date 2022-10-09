@@ -1,4 +1,5 @@
 package in.one2n.exercise;
+import java.io.FileNotFoundException;
 
 import org.junit.Test;
 
@@ -17,7 +18,7 @@ public class GraderTest {
 
     @Test
     //Parse input file into list of students
-    public void itShouldParseInputTestDataIntoStudents() {
+    public void itShouldParseInputTestDataIntoStudents() throws FileNotFoundException {
         String filepath = Paths.get("src", "test", "resources", "grades.csv").toString();
 
         List<Student> students = grader.parseCSV(filepath);
@@ -35,7 +36,7 @@ public class GraderTest {
 
     @Test
     //Calculate Student Grade and Final score
-    public void itShouldCalculateStudentGradeAndFinalScore() {
+    public void itShouldCalculateStudentGradeAndFinalScore() throws FileNotFoundException {
         String filepath = Paths.get("src", "test", "resources", "grades.csv").toString();
         List<Student> students = grader.parseCSV(filepath);
 
@@ -53,7 +54,7 @@ public class GraderTest {
 
     @Test
     //Find out overall topper student
-    public void itShouldFindOverallTopperStudent() {
+    public void itShouldFindOverallTopperStudent() throws FileNotFoundException {
         String filepath = Paths.get("src", "test", "resources", "grades.csv").toString();
         List<Student> students = grader.parseCSV(filepath);
         List<Student> gradedStudents = grader.calculateGrade(students);
@@ -65,7 +66,7 @@ public class GraderTest {
 
     @Test
     //Find out topper student for each university
-    public void itShouldFindTopperStudentForEachUniversity() {
+    public void itShouldFindTopperStudentForEachUniversity() throws FileNotFoundException {
         String filepath = Paths.get("src", "test", "resources", "grades.csv").toString();
         List<Student> students = grader.parseCSV(filepath);
         List<Student> gradedStudents = grader.calculateGrade(students);
@@ -79,3 +80,4 @@ public class GraderTest {
         assertThat(universityTopper.get("University of Florida"), is(new Student("Nathan", "Gordon", "University of Florida")));
     }
 }
+//FirstName,LastName,University,Test1,Test2,Test3,Test4
